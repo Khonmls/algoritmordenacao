@@ -1,0 +1,33 @@
+.centered {
+margin: 10px auto;
+width: 45%;
+padding: 10px;
+}
+
+button{
+	background-color: gray;
+	border-radius: 15%;
+	cursor: pointer;
+	border-color: white;
+}
+body{
+	background-color: #505053;
+}
+.smallfont{
+	text-align: center;
+}
+#paraEsquerda{
+	float: left;
+	margin: 5px;
+}
+#buttonSpoiler{
+	background-color: gray;
+	border-radius: 15%;
+	cursor: pointer;
+	border-color: black;
+}
+body p{
+	background-color: #7D7777;
+	text-align: justify;
+}
+

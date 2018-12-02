@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv = "X-UA-Compatible" content="id-edge">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<title>Algoritmos de Ordenação</title>
+</head>
+<header>
+
+</header>
+<aside>
+
+</aside>
+<body>
+
+    <script src="js/highcharts.js"></script>
+    <script src="js/modules/exporting.js"></script>
+    <script src="js/modules/export-data.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/merge.js"></script>
+    <script src="js/bubble.js"></script>
+    <script src="js/selection.js"></script>
+    <script src="js/insertion.js"></script>
+    <script src="js/quick.js"></script>
+
+    <div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+    <div class="centered">
+        <main>
+           <button onclick="mergeSort()">Merge Sort</button>
+           <button onclick="bubbleSort()">Bubble Sort</button>
+           <button onclick="selectionSort()">Selection Sort</button>
+           <button onclick="insertionSort()">Insertion Sort</button>
+           <button onclick="quickSort()">Quick Sort</button>
+           <button onclick="window.onload()">Gráfico</button>
+       </main>
+   </div>
+   <input type="text" id="mergeC" hidden="">
+   <input type="text" id="mergeD" hidden="">
+   <input type="text" id="mergeR" hidden="">
+   <input type="text" id="bubbleC" hidden="">
+   <input type="text" id="bubbleD" hidden="">
+   <input type="text" id="bubbleR" hidden="">
+   <input type="text" id="selectionC" hidden="">
+   <input type="text" id="selectionD" hidden="">
+   <input type="text" id="selectionR" hidden="">
+   <input type="text" id="insertionC" hidden="">
+   <input type="text" id="insertionD" hidden="">
+   <input type="text" id="insertionR" hidden="">
+   <input type="text" id="quickC" hidden="">
+   <input type="text" id="quickD" hidden="">
+   <input type="text" id="quickR" hidden="">
+
+   <script type="text/javascript">
+
+      window.onload = function graficoShow(){
+         let mergeC = parseInt(document.getElementById("mergeC").value)
+         let mergeD = parseInt(document.getElementById("mergeD").value)
+         let mergeR = parseInt(document.getElementById("mergeR").value)
+         let bubbleC = parseInt(document.getElementById("bubbleC").value)
+         let bubbleD = parseInt(document.getElementById("bubbleD").value)
+         let bubbleR = parseInt(document.getElementById("bubbleR").value)
+         let selectionC = parseInt(document.getElementById("selectionC").value)
+         let selectionD = parseInt(document.getElementById("selectionD").value)
+         let selectionR = parseInt(document.getElementById("selectionR").value)
+         let insertionC = parseInt(document.getElementById("insertionC").value)
+         let insertionD = parseInt(document.getElementById("insertionD").value)
+         let insertionR = parseInt(document.getElementById("insertionR").value)
+         let quickC = parseInt(document.getElementById("quickC").value)
+         let quickD = parseInt(document.getElementById("quickD").value)
+         let quickR = parseInt(document.getElementById("quickR").value)
+
+         Highcharts.chart('container', {
+            chart: {
+               type: 'bar'
+           },
+           title: {
+               text: 'Tempos das Ordenações'
+           },
+           xAxis: {
+               categories: ['Quick Sort', 'Insertion Sort', 'Selection Sort', 'Merge Sort', 'Bubble Sort'],
+               title: {
+                  text: null
+              }
+          },
+          yAxis: {
+           min: 0,
+           title: {
+              text: 'Tempo (ms)',
+              align: 'high'
+          },
+          labels: {
+              overflow: 'justify'
+          }
+      },
+      tooltip: {
+       valueSuffix: ' milisegundos'
+   },
+   plotOptions: {
+       bar: {
+          dataLabels: {
+             enabled: true
+         }
+     }
+ },
+ legend: {
+   layout: 'vertical',
+   align: 'right',
+   verticalAlign: 'top',
+   x: -40,
+   y: 100,
+   floating: true,
+   borderWidth: 1, 
+   backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+   shadow: true
+},
+credits: {
+   enabled: false
+},
+series: [{
+   name: 'Crescente',
+   data: [quickC, insertionC, selectionC, mergeC, bubbleC]
+}, {
+   name: 'Decrescente',
+   data: [quickD, insertionD, selectionD, mergeD, bubbleD]
+}, {
+   name: 'Desordenado',
+   data: [quickR, insertionR, selectionR, mergeR, bubbleR]
+},]
+})};
+</script>
+<div class="centered">
+
+    <div id="paraEsquerda">
+        <div class="divspoiler">
+            <input id="buttonSpoiler" type="button" value="Sobre Quick" onclick="if (this.parentNode.nextSibling.childNodes[0].style.display != '') { this.parentNode.nextSibling.childNodes[0].style.display = ''; this.value = 'Ocultar'; } else { this.parentNode.nextSibling.childNodes[0].style.display = 'none'; this.value = 'Sobre Quick'; }" />
+        </div><div><div class="spoiler" style="display: none;">
+            <p>O quicksort adota a estratégia de divisão e conquista. A estratégia consiste em rearranjar as chaves de modo que as chaves "menores" precedam as chaves "maiores". Em seguida o quicksort ordena as duas sublistas de chaves menores e maiores recursivamente até que a lista completa se encontre ordenada.</p>
+        </div></div>
+    </div>
+
+    <div id="paraEsquerda">
+        <div class="divspoiler">
+            <input id="buttonSpoiler" type="button" value="Sobre Insertion" onclick="if (this.parentNode.nextSibling.childNodes[0].style.display != '') { this.parentNode.nextSibling.childNodes[0].style.display = ''; this.value = 'Ocultar'; } else { this.parentNode.nextSibling.childNodes[0].style.display = 'none'; this.value = 'Sobre Insertion'; }" />
+        </div><div><div class="spoiler" style="display: none;">
+            <p>Insertion Sort, ou ordenação por inserção, é o algoritmo de ordenação que, dado uma estrutura (array, lista) constrói uma matriz final com um elemento de cada vez, uma inserção por vez. Assim como algoritmos de ordenação quadrática, é bastante eficiente para problemas com pequenas entradas, sendo o mais eficiente entre os algoritmos desta ordem de classificação.</p>
+        </div></div>
+    </div>
+
+    <div id="paraEsquerda">
+        <div class="divspoiler">
+            <input id="buttonSpoiler" type="button" value="Sobre Selection" onclick="if (this.parentNode.nextSibling.childNodes[0].style.display != '') { this.parentNode.nextSibling.childNodes[0].style.display = ''; this.value = 'Ocultar'; } else { this.parentNode.nextSibling.childNodes[0].style.display = 'none'; this.value = 'Sobre Selection'; }" />
+        </div><div><div class="spoiler" style="display: none;">
+            <p>A ordenação por seleção (do inglês, selection sort) é um algoritmo de ordenação baseado em se passar sempre o menor valor do vetor para a primeira posição (ou o maior dependendo da ordem requerida), depois o de segundo menor valor para a segunda posição, e assim é feito sucessivamente com os n-1 elementos restantes, até os últimos dois elementos.</p>
+        </div></div>
+    </div>
+
+    <div id="paraEsquerda">
+        <div class="divspoiler">
+            <input id="buttonSpoiler" type="button" value="Sobre Merge" onclick="if (this.parentNode.nextSibling.childNodes[0].style.display != '') { this.parentNode.nextSibling.childNodes[0].style.display = ''; this.value = 'Ocultar'; } else { this.parentNode.nextSibling.childNodes[0].style.display = 'none'; this.value = 'Sobre Merge'; }" />
+        </div><div><div class="spoiler" style="display: none;">
+            <p>Sua ideia básica consiste em Dividir (o problema em vários subproblemas e resolver esses subproblemas através da recursividade) e Conquistar (após todos os subproblemas terem sido resolvidos ocorre a conquista que é a união das resoluções dos subproblemas). Como o algoritmo Merge Sort usa a recursividade, há um alto consumo de memória e tempo de execução, tornando esta técnica não muito eficiente em alguns problemas.</p>
+        </div></div>
+    </div>
+
+    <div id="paraEsquerda">
+        <div class="divspoiler">
+            <input id="buttonSpoiler" type="button" value="Sobre Bubble" onclick="if (this.parentNode.nextSibling.childNodes[0].style.display != '') { this.parentNode.nextSibling.childNodes[0].style.display = ''; this.value = 'Ocultar'; } else { this.parentNode.nextSibling.childNodes[0].style.display = 'none'; this.value = 'Sobre Bubble'; }" />
+        </div><div><div class="spoiler" style="display: none;">
+            <p>O Bubble Sort, ou ordenação por flutuação (literalmente "por bolha"), é um algoritmo de ordenação dos mais simples. A ideia é percorrer o vector diversas vezes, e a cada passagem fazer flutuar para o topo o maior elemento da sequência. Essa movimentação lembra a forma como as bolhas em um tanque de água procuram seu próprio nível, e disso vem o nome do algoritmo.</p>
+        </div></div>
+    </div>
+</div>
+
+<footer>
+
+</footer>
+</body>
+</html>
